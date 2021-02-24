@@ -1,8 +1,18 @@
-import React from "react";
 import "./styles/global.css";
+import Header from "./components/Header";
+import TypeArea from "./components/TypeArea";
+import Footer from "./components/Footer";
+import Actions from "./components/Actions";
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <>
+      <Header />
+      <TypeArea />
+      <Actions />
+      <Footer />
+    </>
+  );
 }
 
 export default App;

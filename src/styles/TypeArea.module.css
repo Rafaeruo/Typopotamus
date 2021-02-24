@@ -1,0 +1,24 @@
+.typeAreaContainer {
+  font-size: 1.4rem;
+  font-weight: 400;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+}
+
+.typeAreaWordContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  max-width: 1000px;
+}
+
+.typeAreaWordContainer > span {
+  padding: 0.3rem;
+}

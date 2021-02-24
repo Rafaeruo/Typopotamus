@@ -1,0 +1,24 @@
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.headerContainer strong {
+  font-size: 1.3rem;
+}
+
+.headerContainer ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.headerContainer ul li {
+  font-weight: 300;
+  padding: 0 0.3rem;
+}

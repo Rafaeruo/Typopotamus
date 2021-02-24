@@ -1,0 +1,17 @@
+.actionsContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.actionsContainer ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.actionsContainer ul li {
+  font-weight: 300;
+  padding: 0 0.3rem;
+}
