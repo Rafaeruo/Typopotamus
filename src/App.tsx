@@ -4,12 +4,16 @@ import TypeArea from "./components/TypeArea";
 import Footer from "./components/Footer";
 import Actions from "./components/Actions";
 
+import { WordsContextProvider } from "./contexts/WordsContext";
+
 function App() {
   return (
     <>
       <Header />
-      <TypeArea />
-      <Actions />
+      <WordsContextProvider>
+        <TypeArea />
+        <Actions />
+      </WordsContextProvider>
       <Footer />
     </>
   );

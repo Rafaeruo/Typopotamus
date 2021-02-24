@@ -7,8 +7,8 @@ interface props {
 function Word(props: props) {
   return (
     <span>
-      {props.word.split("").map((letter) => {
-        return <Letter letter={letter} />;
+      {props.word.split("").map((letter, index) => {
+        return <Letter key={index} letter={letter} />;
       })}
     </span>
   );
