@@ -1,8 +1,7 @@
 import { useState } from "react";
 import styles from "../styles/TypeArea.module.css";
 import Word from "./Word";
-
-const randomWords = require("random-words");
+import randomWords from "random-words";
 
 function TypeArea() {
   const [words, setWords] = useState(generateWords);
@@ -18,10 +17,10 @@ function TypeArea() {
           setWords(generateWords);
         }}
       >
-        {words.map((value) => {
+        {words.map((word) => {
           return (
             <>
-              <Word word={value} />
+              <Word word={word} />
               <span>&nbsp;</span>
             </>
           );
@@ -30,8 +29,8 @@ function TypeArea() {
     </div>
   );
 
-  function generateWords(): String[] {
-    return randomWords(100);
+  function generateWords() {
+    return randomWords(100) as String[];
   }
 }
 
