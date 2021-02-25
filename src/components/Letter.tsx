@@ -1,15 +1,23 @@
-import { useEffect, useContext } from "react";
-import { WordsContext } from "../contexts/WordsContext";
+import { useEffect } from "react";
 
 interface props {
   letter: String;
+  isActive: boolean;
 }
 
 function Letter(props: props) {
-  const { currentPosition } = useContext(WordsContext);
   useEffect(() => {});
 
-  return <span style={{ color: "inherit" }}>{props.letter}</span>;
+  return (
+    <>
+      {props.isActive ? (
+        <span style={{ textDecoration: "underline" }}>{props.letter}</span>
+      ) : (
+        <span>{props.letter}</span>
+      )}
+    </>
+  );
+  // return <span style={{ color: "inherit" }}>{props.letter}</span>;
 }
 
 export default Letter;

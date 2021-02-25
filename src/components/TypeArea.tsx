@@ -11,7 +11,15 @@ function TypeArea() {
   );
 
   const wordsElements = words.map((word, index) => {
-    return <Word key={index} word={word} />;
+    return (
+      <Word
+        key={index}
+        word={word}
+        activeLetter={
+          index === currentPosition.word ? currentPosition.letter : null
+        }
+      />
+    );
   });
 
   //handle keyboard input when word container is focuesed
