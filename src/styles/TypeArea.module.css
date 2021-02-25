@@ -26,6 +26,11 @@
   -ms-user-select: none;
   user-select: none;
 
-  /* height: 5.3rem;
-  overflow: hidden; */
+  /* prevent ouline from showing up on focus */
+  outline: none;
+}
+
+.typeAreaWordContainer span span {
+  /* show white spaces inside letter spans */
+  white-space: pre;
 }
