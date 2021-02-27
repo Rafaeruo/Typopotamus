@@ -24,14 +24,46 @@ function TypeArea() {
 
   //handle keyboard input when word container is focuesed
   function handleKeyDown(e: React.KeyboardEvent) {
-    if (e.key === words[currentPosition.word][currentPosition.letter]) {
-      console.log(e.key);
-      if (currentPosition.letter === words[currentPosition.word].length - 1) {
-        setCurrentPosition({ letter: 0, word: currentPosition.word + 1 });
+    const isLastLetter =
+      currentPosition.letter === words[currentPosition.word].length - 1
+        ? true
+        : false;
+    const isFirstLetter = currentPosition.letter === 0 ? true : false;
+
+    if (e.key !== "Backspace") {
+      //if not backspace
+      //check wether input is correct
+      if (e.key === words[currentPosition.word][currentPosition.letter]) {
+        console.log(e.key);
+      }
+      //move caret forward
+      if (isLastLetter) {
+        if (currentPosition.word !== words.length - 1) {
+          setCurrentPosition({
+            word: currentPosition.word + 1,
+            letter: 0,
+          });
+        }
       } else {
         setCurrentPosition({
           ...currentPosition,
           letter: currentPosition.letter + 1,
+        });
+      }
+    } else {
+      //if backspace
+      //move caret back
+      if (isFirstLetter) {
+        if (currentPosition.word !== 0) {
+          setCurrentPosition({
+            word: currentPosition.word - 1,
+            letter: words[currentPosition.word - 1].length - 1,
+          });
+        }
+      } else {
+        setCurrentPosition({
+          ...currentPosition,
+          letter: currentPosition.letter - 1,
         });
       }
     }
