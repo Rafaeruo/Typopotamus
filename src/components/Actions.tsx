@@ -3,11 +3,16 @@ import { WordsContext } from "../contexts/WordsContext";
 import styles from "../styles/Actions.module.css";
 
 function Actions() {
-  const { generateAndSetWords, setCurrentPosition } = useContext(WordsContext);
+  const {
+    generateAndSetWords,
+    setCurrentPosition,
+    setWasLastMistake,
+  } = useContext(WordsContext);
 
   function restartTypeArea() {
     generateAndSetWords();
     setCurrentPosition({ word: 0, letter: 0 });
+    setWasLastMistake(false);
   }
 
   return (

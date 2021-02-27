@@ -6,9 +6,12 @@ import { useContext } from "react";
 import { WordsContext } from "../contexts/WordsContext";
 
 function TypeArea() {
-  const { words, currentPosition, setCurrentPosition } = useContext(
-    WordsContext
-  );
+  const {
+    words,
+    currentPosition,
+    setCurrentPosition,
+    setWasLastMistake,
+  } = useContext(WordsContext);
 
   const wordsElements = words.map((word, index) => {
     return <Word key={index} word={word} position={index} />;
@@ -26,7 +29,9 @@ function TypeArea() {
       //if not backspace
       //check wether input is correct
       if (e.key === words[currentPosition.word][currentPosition.letter]) {
-        console.log(e.key);
+        setWasLastMistake(false);
+      } else {
+        setWasLastMistake(true);
       }
       //move caret forward
       if (isLastLetter) {

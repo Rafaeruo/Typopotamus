@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useLayoutEffect, useState } from "react";
 import { WordsContext } from "../contexts/WordsContext";
 import styles from "../styles/Letter.module.css";
 
@@ -12,26 +12,58 @@ interface props {
 
 function Letter(props: props) {
   const [activeClass, setActiveClass] = useState(styles.letterUnreached);
+  const [isActive, setIsActive] = useState(false);
 
-  const { currentPosition } = useContext(WordsContext);
+  const { currentPosition, wasLastMistake } = useContext(WordsContext);
 
-  //side effect to changing currentPosition
-  useEffect(() => {
+  const [isFirstRender, setIsFirstRender] = useState(true);
+
+  // //side effect to changing currentPosition
+  // useLayoutEffect(() => {
+  //   if (
+  //     currentPosition.word === props.position.word &&
+  //     currentPosition.letter === props.position.letter
+  //   ) {
+  //     setActiveClass(styles.letterCurrent);
+  //   } else if (
+  //     currentPosition.word > props.position.word ||
+  //     (currentPosition.word === props.position.word &&
+  //       currentPosition.letter > props.position.letter)
+  //   ) {
+  //     setActiveClass(styles.letterReached);
+  //   } else {
+  //     setActiveClass(styles.letterUnreached);
+  //   }
+  // }, [currentPosition, props.position]); //only added props.position to remove warning
+
+  useLayoutEffect(() => {
     if (
+      !isActive &&
       currentPosition.word === props.position.word &&
       currentPosition.letter === props.position.letter
     ) {
-      setActiveClass(styles.letterCurrent);
-    } else if (
-      currentPosition.word > props.position.word ||
-      (currentPosition.word === props.position.word &&
-        currentPosition.letter > props.position.letter)
-    ) {
-      setActiveClass(styles.letterReached);
-    } else {
-      setActiveClass(styles.letterUnreached);
+      setIsActive(true);
+    } else if (isActive) {
+      setIsActive(false);
     }
-  }, [currentPosition, props.position]); //only added props.position to remove warning
+  }, [currentPosition]);
+
+  useLayoutEffect(() => {
+    if (isFirstRender) {
+      setIsFirstRender(false);
+      return;
+    }
+    // console.log(`1: ${isActive}`);
+    if (isActive) {
+      setActiveClass(styles.letterCurrent);
+    } else {
+      if (wasLastMistake) {
+        setActiveClass(styles.letterMisspelled);
+      } else {
+        setActiveClass(styles.letterReached);
+      }
+    }
+  }, [isActive]);
 
   return (
     <span className={activeClass}>{props.letter}</span>

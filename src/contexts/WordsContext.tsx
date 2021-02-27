@@ -15,6 +15,8 @@ interface contextData {
     word: number;
   };
   setCurrentPosition: (currP: contextData["currentPosition"]) => void;
+  wasLastMistake: boolean;
+  setWasLastMistake: (wasLastMistake: contextData["wasLastMistake"]) => void;
 }
 
 export function WordsContextProvider(props: props) {
@@ -28,6 +30,7 @@ export function WordsContextProvider(props: props) {
     word: 0,
     letter: 0,
   });
+  const [wasLastMistake, setWasLastMistake] = useState(false);
 
   //create the random word array with the randomWords function
   function generateAndSetWords() {
@@ -50,6 +53,8 @@ export function WordsContextProvider(props: props) {
         generateAndSetWords,
         currentPosition,
         setCurrentPosition,
+        wasLastMistake,
+        setWasLastMistake,
       }}
     >
       {props.children}
