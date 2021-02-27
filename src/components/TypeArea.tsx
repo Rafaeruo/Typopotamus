@@ -15,7 +15,7 @@ function TypeArea() {
       <Word
         key={index}
         word={word}
-        activeLetter={
+        currentLetter={
           index === currentPosition.word ? currentPosition.letter : null
         }
       />

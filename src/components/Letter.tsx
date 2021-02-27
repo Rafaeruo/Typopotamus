@@ -2,13 +2,13 @@ import styles from "../styles/Letter.module.css";
 
 interface props {
   letter: String;
-  isActive: boolean;
+  isCurrent: boolean;
 }
 
 function Letter(props: props) {
   return (
     <>
-      {props.isActive ? (
+      {props.isCurrent ? (
         <span className={styles.letterCurrent}>{props.letter}</span>
       ) : (
         <span className={styles.letterUnreached}>{props.letter}</span>
