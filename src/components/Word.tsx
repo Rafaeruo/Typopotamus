@@ -2,7 +2,7 @@ import Letter from "./Letter";
 
 interface props {
   word: String;
-  currentLetter: number | null;
+  position: number;
 }
 
 function Word(props: props) {
@@ -13,7 +13,7 @@ function Word(props: props) {
           <Letter
             key={index}
             letter={letter}
-            isCurrent={props.currentLetter === index ? true : false}
+            position={{ word: props.position, letter: index }}
           />
         );
       })}
