@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import styles from "../styles/Letter.module.css";
 
 interface props {
   letter: String;
@@ -6,14 +6,12 @@ interface props {
 }
 
 function Letter(props: props) {
-  useEffect(() => {});
-
   return (
     <>
       {props.isActive ? (
-        <span style={{ textDecoration: "underline" }}>{props.letter}</span>
+        <span className={styles.letterCurrent}>{props.letter}</span>
       ) : (
-        <span>{props.letter}</span>
+        <span className={styles.letterUnreached}>{props.letter}</span>
       )}
     </>
   );

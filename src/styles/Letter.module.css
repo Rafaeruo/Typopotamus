@@ -1,0 +1,23 @@
+.letterUnreached {
+  color: inherit;
+}
+
+.letterReached {
+  color: lightblue;
+}
+
+.letterMisspelled {
+  color: red;
+}
+
+.letterCurrent {
+  color: inherit;
+  position: relative;
+}
+
+.letterCurrent::before {
+  color: aqua;
+  content: "|";
+  position: absolute;
+  transform: translateX(-50%);
+}

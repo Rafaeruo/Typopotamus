@@ -5,17 +5,16 @@ import styles from "../styles/Actions.module.css";
 function Actions() {
   const { generateAndSetWords, setCurrentPosition } = useContext(WordsContext);
 
+  function restartTypeArea() {
+    generateAndSetWords();
+    setCurrentPosition({ word: 0, letter: 0 });
+  }
+
   return (
     <div className={styles.actionsContainer}>
       <ul>
         <li>
-          <button
-            type="button"
-            onClick={() => {
-              generateAndSetWords();
-              setCurrentPosition({ word: 0, letter: 0 });
-            }}
-          >
+          <button type="button" onClick={restartTypeArea}>
             Restart
           </button>
         </li>
